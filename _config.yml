@@ -1,0 +1,29 @@
+title: Your awesome title
+email: your-email@domain.com
+description: You can update description in update blog details page.
+
+baseurl: "/"
+url: https://monsoonmalabar.com/jithin
+google_adsense: Your-adsense-code
+
+markdown: kramdown
+
+name: Your awesome title
+
+date: 2020-05-18 02:27:39 +0000
+
+
+logo: false
+
+paginate: 10
+adsid: ca-pub-8582082279264878
+excerpt_separator: <!-- more -->
+domain_name: https://monsoonmalabar.com/jithin/
+google_analytics: UA-31XXXXXX-X
+gems:
+  - jekyll-paginate
+  - jekyll-sitemap
+cover: 
+author_image: 
+
+author: jithin

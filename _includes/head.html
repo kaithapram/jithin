@@ -1,0 +1,60 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#33b5e5" />
+  
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+  <meta property="og:title" content="{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}" />
+  <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
+  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/all.css">
+  <link href="{{site.baseurl}}/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/assets/css/mdb.min.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/assets/css/style.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/assets/css/owl.carousel.min.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/assets/css/owl.theme.default.min.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/assets/css/animate.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/assets/css/slide.css" rel="stylesheet">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url}}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.url}}" />
+  <link href="{{'/assets/css/ekko-lightbox.css' | prepend: site.baseurl}}" rel="stylesheet" />
+  {% if site.cover %}
+  <link rel="icon" type="image/png" href="{{ site.cover }}" />
+  {% endif %}
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/popper.min.js"></script>
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/mdb.min.js"></script>
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/scroll.js"></script> 
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/slide-with-gallery-packed.js"></script>
+  <script type="text/javascript" src="{{site.baseurl}}/assets/js/ekko-lightbox.js"></script>
+  <script type="text/javascript">
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+  </script> 
+  
+  {% assign thesiz = site.google_adsense.size %}
+  {% if site.google_adsense and thesiz == 23 %}
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "{{ site.google_adsense }}",
+      enable_page_level_ads: true
+    });
+  </script>
+  {% endif %}
+  {% if jekyll.environment == 'production' and site.google_analytics %}
+  {% include google-analytics.html %}
+  {% endif %}
+<link rel="manifest" href="{{ '/manifest.json' | prepend: site.baseurl }}">
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("{{ site.baseurl }}/sw.js");
+    }
+  </script>
+  <script src="https://js.instamojo.com/v1/checkout.js"></script>
+</head>

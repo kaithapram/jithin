@@ -1,0 +1,76 @@
+<footer>
+    
+  <script>
+    $('.car-content .owl-carousel').owlCarousel({
+        autoplay:true,
+        autoplayTimeout:2500,
+        autoplayHoverPause:true,
+      animateOut: 'slideOutDown',
+        animateIn: 'flipInX',
+        loop: true,
+        margin: 10,
+        nav: false,
+        responsive:{
+            0:{
+                items: 1
+            },
+            600:{
+                items: 2
+            },
+            1024:{
+                items: 4
+            },
+            1366:{
+                items: 5
+            }
+        }
+    });
+    
+    </script>
+   <script>
+  
+ScrollOut({
+    targets: '.wow',
+    
+ })
+
+</script> 
+<script> 
+$(document).ready(function() {
+    $('.car-content .owl-carousel').owlCarousel({
+        autoplay:true,
+        autoplayTimeout:2500,
+        autoplayHoverPause:true,
+        loop: true,
+        dots: false,
+        margin: 8,
+        nav: false,
+    responsive:{
+            0:{
+                items: 1
+            },
+            600:{
+                items: 2
+            },
+            1366:{
+                items: 3
+            }
+        }
+    
+    
+    });
+    
+    });
+</script> 
+     <div class="box2">
+      <ul>
+          
+          <span><a class="text-muted" href="mailto:{{ site.email }}">{{ site.email }}</a></span> <span class="text-muted"> &bull; </span> <span class="text-muted">{{ site.description }}</span> <span class="text-muted"> &bull; </span> <span><a class="text-muted" href="{{ site.url }}/tos/index.html">Terms of Service</a></span> <span class="text-muted"> &bull; </span> <span><a class="text-muted" href="{{ site.url }}/privacy/index.html">Privacy Policy</a></span> <span class="text-muted"> &bull; </span> <span class="text-muted">Developed and maintained by <a href="http://www.monsoonmalabar.com" class="text-warning">Monsoon Malabar</a></span> <span class="text-muted"> &bull; </span> <span class="text-success">Go green, go veg.</span>
+        </ul>
+
+      </div>
+
+
+</footer>
+
+

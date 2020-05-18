@@ -1,0 +1,130 @@
+---
+layout: default
+---
+<div class="container top-pad">
+
+  
+
+ <div class="card mb-4">
+  
+
+
+		
+		
+
+
+<div class="card-body">
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header wow">
+    <h4 class="card-title text-center text-info" itemprop="name headline">{{ page.title }}</h4>
+         <div class="text-center">
+
+          <a href="https://www.facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><button type="button" class="btn btn-sm btn-facebook"><i class="fab fa-facebook-f fa-lg"></i> Share</button></a>
+    <a href="whatsapp://send?text={{ site.url}}{{ page.url }}" data-action="share/whatsapp/share"><button type="button" class="btn btn-sm text-white btn-whatsapp"><i class="fab fa-whatsapp fa-lg"></i> Share</button></a>
+    <button class="btn btn-sm btn-secondary px-3 d-lg-none text-default" type="submit" value="submit"><i class="fa fa-share-alt fa-lg share-btn5"></i></button>
+</div>
+
+<div class="byline text-center"><span><i class="fa fa-calendar"></i> <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span><i class="fas fa-pencil-alt" aria-hidden="true"></i> {% if site.author %}<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ site.author }}</span></span>{% endif %}</span>
+</div>
+
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+      {% assign yt = page.content | split:"!-- [ytb "%}      
+      {% assign htm = yt[1] | split:"] -->" | first %}
+      {% assign thesize = htm.size %}
+      {% if htm and thesize == 11 %}
+      {% include youtubeplayer.html id=htm %}
+      {% endif %}
+      {% unless htm or thesize == 11 %}
+      {% assign image = page.content | split:"!-- ![header](" %}
+      {% assign html = image[1] | split:") -->" | first %}
+      {% if html and html != "" %}
+<div class="text-center wow">
+      <img class="img-thumbnail" src="{{ html }}" alt="header" />
+</div>
+      {% endif %}
+      {% endunless %}
+<br><br>
+      <div class="wow">
+    {{ content }}
+  </div>
+</div>
+</article>
+
+
+
+
+<div class="wow">
+{% include fb-comment.html %}
+</div>
+</div>
+    </div>
+
+<div class="card mb-4">
+
+  <div class="card-body">
+    <div class="wow">
+      <h3 class="text-info text-center alert alert-info">Related Items</h3>
+      <div class="car-content">
+          <div class="owl-carousel owl-theme">
+            {% for post in site.posts limit:10 %}
+            {% if post.url != page.url %}
+              <div class="item">
+                  
+                <div class="card m-2">
+                    <a href="{{ site.url }}{{ post.url }}">
+                      {% assign yt = post.content | split:"!-- [ytb "%}      
+                      {% assign htm = yt[1] | split:"] -->" | first %}
+                      {% assign thesize = htm.size %}
+                      {% if htm and thesize == 11 %}
+                      <img class="item-image" src="https://i.ytimg.com/vi/{{ htm }}/mqdefault.jpg" alt="Carousel 1">
+                      {% endif %}
+                      {% unless htm or thesize == 11 %}
+                      {% assign image = post.content | split:"!-- ![header](" %}
+                      {% assign html = image[1] | split:") -->" | first %}
+                      {% if html and html != "" %}
+                          <img class="item-image" src="{{ html }}" alt="Carousel 1">
+                        {% endif %}
+                        {% endunless %}
+                        <div class="card-body text-center">
+                            <span class="text-info">{{ post.title }}</span><br>
+                            <span class="text-info" style="font-size: 12px !important;">{{ post.excerpt | strip_html }}</span>
+                        </div>
+                      </a>
+                </div>
+                  
+                  
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+<script>
+  document.querySelector('.share-btn5').addEventListener('click', function() {
+    console.log('clicked');
+    
+      var tit = `{{ page.title }}`;       
+      const title = tit.replace(/<\/?[^>]+(>|$)/g, "");
+      const url = '{{ site.baseurl }}{{ page.url }}';
+    if(navigator.share) {  
+      navigator.share({
+        title,
+        url
+      })
+      .then(() => console.log('Success'))
+      .catch((error) => console.log('Error sharing', error));
+    }
+  });
+</script>
+
